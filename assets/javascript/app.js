@@ -126,6 +126,8 @@ var game = {
         clearInterval(timer);
         game.incorrect++;
         $('#subwrapper').html('<h2>YOU GOT IT WRONG!</h2>');
+        $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.
+            currentQuestion].correctAnswer+'</h3>');
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results,3*1000);
         } else {
