@@ -19,31 +19,31 @@ var questions = [{
 }, {
     question: "Which Actor/Actress has won the most Oscars for acting?",
     answers: ["Jack Nicholson", "Meryl Streep", "Daniel Day-Lewis", "Katharine Hepburn"],
-    correctAnswer:"Katharine Hepburn",
+    correctAnswer:"Katharine Hepburn"
 }, {
     question: "What was the name of the kingdom where the 2013 animated movie Frozen is set?",
     answers: ["Pandora", "Arendale", "The Shire", "Lilliput"],
-    correctAnswer:"Arendale",
+    correctAnswer:"Arendale"
 }, {
     question: "What was the name of the protagonist crime family in the Godfather movies?",
     answers: ["Soluzzo", "Andolini", "Santino", "Corleone"],
-    correctAnswer:"Corleone",
+    correctAnswer:"Corleone"
 }, {
     question: "How many infinity Stones are there in the MCU?",
     answers: ["4", "5", "6", "7"],
-    correctAnswer:"6",
+    correctAnswer:"6"
 }, {
     question: "Who was the most voluptuous female in Toontown?",
     answers: ["Betty Boop", "Jessica Rabbit", "Lola Bunny", "Foxxy Love"],
-    correctAnswer:"Jessica Rabbit",
+    correctAnswer:"Jessica Rabbit"
 }, {
     question: "Which movie franchise has the most sequels?",
     answers: ["Godzilla", "Marvel Cinematic Universe", "James Bond", "Star Trek"],
-    correctAnswer:"Godzilla",
+    correctAnswer:"Godzilla"
 }, {
     question: "What did Zach Galifianakis character 'Alan', call the baby he carries around with him in the first Hangover movie",
     answers: ["Juan", "Pedro", "Carlos", "Jose"],
-    correctAnswer:"Carlos",
+    correctAnswer:"Carlos"
 }];
 
 var game = {
@@ -52,7 +52,7 @@ var game = {
     counter:30,
     correct:0,
     incorrect:0,
-    Unanswered:0,
+    unanswered:0,
     countdown: function(){
         game.counter--;
         $('#counter').html(game.counter);
@@ -63,7 +63,7 @@ var game = {
     },
     loadQuestion: function(){
         timer = setInterval(game.countdown,1000);
-        $('#subwrapper').html("<h2>TIME REMAINING <span id= 'counter'>30</span> Seconds</h2>");
+        $('#subwrapper').html("<h2>TIME REMAINING: <span id= 'counter'>30</span> Seconds</h2>");
         $('#subwrapper').append('<h2>'+questions[game.currentQuestion].question+'</h2>');
         for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
             $('#subwrapper').append('<button class="answer-button" id="button-'+i+'" data-name="'+questions[game.
@@ -80,7 +80,7 @@ var game = {
     
     timeUp: function(){
         clearInterval(timer);
-        game.Unanswered++;
+        game.unanswered++;
         $('#subwrapper').html('<h2>OUT OF TIME!</h2>');
         $('#subwrapper').append('<h3>The Correct Answer Was: '+questions[game.
             currentQuestion].correctAnswer+'</h3>');
@@ -90,12 +90,12 @@ var game = {
                 setTimeout(game.nextQuestion,3*1000);
         }
     },
-    result: function(){
+    results: function(){
         clearInterval(timer);
         $('#subwrapper').html("<h2>ALL DONE!</h2>");
-        $('#subwrapper').append("<h3>Correct: "+game.correct+"</h3>");
-        $('#subwrapper').append("incorrect: "+game.incorrect+"</h3>");
-        $('#subwrapper').append("<h3>Unanswered: "+game.Unanswered+"</h3>");
+        $('#subwrapper').append("<h3>correct: "+game.correct+"</h3>");
+        $('#subwrapper').append("<h3>incorrect: "+game.incorrect+"</h3>");
+        $('#subwrapper').append("<h3>unanswered: "+game.unanswered+"</h3>");
         $('#subwrapper').append("<button id= 'reset'>RESET</button>");
 
     },
@@ -103,7 +103,7 @@ var game = {
         clearInterval(timer);
         if($(e.target).data("name")==questions[game.currentQuestion].
             correctAnswer){
-                game.answerdCorrectly();
+                game.answeredCorrectly();
             } else {
                 game.answeredIncorrectly();
             }
@@ -137,8 +137,7 @@ var game = {
         game.counter = 0;
         game.correct = 0;
         game.incorrect = 0;
-        game.Unanswered = 0;
+        game.unanswered = 0;
         game.loadQuestion = 0;
-
     }
 }
