@@ -33,3 +33,4 @@ Choose a game to build from your options below.
 * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
 ## Click on this link to play 
+https://ml042685.github.io/TriviaGame/
